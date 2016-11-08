@@ -1,0 +1,166 @@
+/* Elements */
+body {
+  background-color: #F2F4F7;
+  font-family: 'Roboto', sans-serif;
+  margin: 0; }
+
+textarea {
+   resize: none;
+}
+
+
+/* My Classes */
+.page-body {
+  padding-top: 51px;}
+
+.body-container {
+    padding-left: 40px;
+    width: auto;
+    padding-right: 0px;
+}
+
+.selected {
+    border-left: 2px solid green;
+    border-right: 2px solid green;
+}
+
+/* Sidebar*/
+.sidebar {
+  position: absolute;
+    background-color: #63a2e9;
+    top: 0;
+    width: 40px;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    position: fixed;
+    list-style: none; }
+
+.sidebar-nav {
+    position: absolute;
+    top: 0;
+    width: 40px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.sidebar-nav li {
+    text-indent: 6px;
+    line-height: 40px;
+}
+
+.sidebar-nav li a {
+    display: block;
+    text-decoration: none;
+    color: #fff;
+}
+
+.sidebar-nav li a:hover {
+    text-decoration: none;
+    color: #fff;
+    background: #3b6ea9;
+}
+
+.sidebar-nav li a:active,
+.sidebar-nav li a:focus {
+    text-decoration: none;
+}
+
+.sidebar-nav > .sidebar-brand {
+    height: 65px;
+    font-size: 18px;
+    line-height: 60px;
+}
+
+.sidebar-nav > .sidebar-brand a {
+    color: #999999;
+}
+
+.sidebar-nav > .sidebar-brand a:hover {
+    color: #63a2e9;
+    background: none;
+}
+
+.sidebar-control {
+    position: absolute;
+    margin-left: 0px;
+    margin-top: -40px;
+    height: 40px;
+    width: 40px;
+}
+
+.sidebar-nav li > .controls-group > .accept:hover {
+    background: rgba(76, 175, 80, 0.61);
+}
+
+.sidebar-nav li > .controls-group > .decline:hover {
+    background: #b73228;
+}
+
+.accept {
+    margin-left: 40px;
+    background-color: rgba(76, 175, 80, 0.41);
+}
+
+.decline {
+    background-color: #f44336;
+}
+
+/* Override Bootstrap */
+.row{
+    margin: 0px;
+}
+/* Custom Panel */
+.panel-custom {
+    border-color: #fff;
+}
+
+.panel-custom > .panel-heading {
+    background-image: none;
+    background-color: #fff;
+    font-size: 20px;
+}
+
+.panel-custom table tbody td{
+    text-align: center;
+    min-height: 100px;
+    line-height: 100px;
+    min-width: 0px;
+}
+
+.panel-custom table tbody > .table-form td{
+    min-height: 0px;
+    line-height: 0px;
+    min-width: 0px;
+}
+
+.panel-custom table thead td{
+    text-align: center;
+}
+
+/* Custom navbar*/
+.nav > li > a:focus, .nav > li > a:hover {
+    background-color: #3b6ea9;
+}
+.navbar-custom {
+    background-color: #63a2e9;
+    color: #fff;
+    border-radius: 0;
+}
+
+.navbar-brand, .navbar-nav>li > a {
+    text-shadow: none;
+}
+
+.navbar-custom .navbar-nav > li > a {
+    color: #fff;
+}
+
+.navbar-custom > .navbar-nav > li:hover{
+    background-color: #63a2e9;
+}
+
+.navbar-custom .navbar-brand {
+    color: #eeeeee;
+}
