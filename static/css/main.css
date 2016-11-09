@@ -131,7 +131,7 @@ textarea {
 
 .panel-custom table tbody > .table-form td{
     min-height: 0px;
-    line-height: 0px;
+    line-height: 35px;
     min-width: 0px;
 }
 
