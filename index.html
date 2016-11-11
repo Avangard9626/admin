@@ -19,12 +19,6 @@
 			$('[data-toggle="tooltip"]').tooltip({
 				trigger : 'hover'
 			});
-			$(".file").fileinput({
-				language: "ru",
-				uploadUrl: "/file-upload-batch/2",
-				allowedFileExtensions: ["jpg", "png", "gif"],
-				showCaption: false
-			});
 		});
 	</script>
 </head>
@@ -73,7 +67,7 @@
     <li>
       <a onclick="open_remove()" data-toggle="tooltip" data-placement="right" title="Удалить"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a>
       <div id="remove-controls" class="controls-group" hidden>
-        <a class="sidebar-control accept" onclick="close_remove()"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></a>
+        <a class="sidebar-control accept" onclick="accept_remove()"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></a>
         <a class="sidebar-control decline" onclick="close_remove()"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a>
       </div>
     </li>
@@ -116,9 +110,9 @@
             <td><input id="add-text" class="form-control"></td>
             <td>
               <label class="btn btn-default btn-file">
-                Обзор... <input type="file" onchange="$('#upload-file-info').html(this.files[0].name);">
+                Обзор... <input id="add-img" type="file" onchange="$('#info-' + this.name).html(this.files[0].name);" name="file">
               </label>
-              <span class='label label-info' id="upload-file-info"></span>
+              <span class='label label-info upload-file-info' id="info-file"></span>
             </td>
           </form>
         </tr>
