@@ -1,0 +1,80 @@
+{% extends "layout.html" %}
+{% block body %}
+<div class="page-body">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="page-block table">
+					<div class="table-header">
+						<p>Гороскоп</p>
+					</div>
+					<div class="col-md-6">
+						<h3>Добавить изображение</h3>
+						<form class="upload-quote" action={{ url_for("up_horoscope") }} method="POST" enctype="multipart/form-data">
+							<div class="form-group">
+								<select name="zodiac">
+									<option value="1">Овен</option>
+									<option value="2">Телец</option>
+									<option value="3">Близнецы</option>
+									<option value="4">Рак</option>
+									<option value="5">Лев</option>
+									<option value="6">Дева</option>
+									<option value="7">Весы</option>
+									<option value="8">Скорпион</option>
+									<option value="9">Стрелец</option>
+									<option value="10">Козерог</option>
+									<option value="11">Водолей</option>
+									<option value="12">Рыбы</option>
+								</select>
+								<input type="file" name="file" id="file" class="inputfile" />
+								<label for="file" class="upload">Обзор...</label>
+								<button type="submit" class="upload-submit">Отправить</button>
+							</div>
+						</form>
+					</div>
+
+					<div class="row">
+						<div class="col-md-12">
+							<table class="table table-quotation">
+								<thead>
+									<tr>
+										<td>Знак зодиака</td>
+										<td>Изображение</td>
+										<td>Редактирование</td>
+									</tr>
+								</thead>
+								<tbody>
+									{% for item in data %}
+										<tr>
+											<td>
+												{{ item.zodiac_id }}
+											</td>
+											<td>
+												<img src={{ url_for('send_img', filename=item.img_path) }} width="160" alt="">
+											</td>
+											<td>
+												<form action={{ url_for("del_horoscope") }} method=post>
+													<input type=hidden value="{{ item.id }}" name="del_id">
+													<button type=submit class="delete">Удалить</button>
+												</form>
+											</td>
+										</tr>
+									{% endfor %}
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="footer-wrap">
+	<div class="container footer">
+	<div class="row">
+		<div class="col-md-12">Eggs 2016</div>
+	</div>
+	</div>
+</div>
+{% endblock %}

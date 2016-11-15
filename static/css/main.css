@@ -1,8 +1,9 @@
 /* Elements */
 body {
-  background-color: #F2F4F7;
-  font-family: 'Roboto', sans-serif;
-  margin: 0; }
+    background-color: #F2F4F7;
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+}
 
 textarea {
    resize: none;
@@ -27,7 +28,7 @@ textarea {
 /* Sidebar*/
 .sidebar {
   position: absolute;
-    background-color: #63a2e9;
+    background-color: #0B1F36;
     top: 0;
     width: 40px;
     height: 100%;
@@ -38,7 +39,7 @@ textarea {
 
 .sidebar-nav {
     position: absolute;
-    top: 0;
+    top: 100px;
     width: 40px;
     margin: 0;
     padding: 0;
@@ -59,7 +60,7 @@ textarea {
 .sidebar-nav li a:hover {
     text-decoration: none;
     color: #fff;
-    background: #3b6ea9;
+    background: #093D78;
 }
 
 .sidebar-nav li a:active,
@@ -88,6 +89,7 @@ textarea {
     margin-top: -40px;
     height: 40px;
     width: 40px;
+    z-index: 10;
 }
 
 .sidebar-nav li > .controls-group > .accept:hover {
@@ -114,6 +116,20 @@ textarea {
 /* Custom Panel */
 .panel-custom {
     border-color: #fff;
+    margin: 0;
+}
+
+.panel-custom .tab-content {
+    height: 100%;
+}
+
+.panel-custom .tab-pane {
+    overflow-y: auto;
+}
+
+.table tr.fit td {
+    white-space: nowrap;
+    width: 1%;
 }
 
 .panel-custom > .panel-heading {
@@ -122,14 +138,14 @@ textarea {
     font-size: 20px;
 }
 
-.panel-custom table tbody td{
+.panel-custom table tbody td {
     text-align: center;
     min-height: 100px;
     line-height: 100px;
     min-width: 0px;
 }
 
-.panel-custom table tbody > .table-form td{
+.panel-custom table tbody > .table-form td {
     min-height: 0px;
     line-height: 35px;
     min-width: 0px;
@@ -140,16 +156,14 @@ textarea {
 }
 
 /* Custom navbar*/
-.nav > li > a:focus, .nav > li > a:hover {
-    background-color: #3b6ea9;
-}
 .navbar-custom {
     background-color: #63a2e9;
     color: #fff;
     border-radius: 0;
+    left: 40px;
 }
 
-.navbar-brand, .navbar-nav>li > a {
+.navbar-brand, .navbar-nav > li > a {
     text-shadow: none;
 }
 
@@ -157,10 +171,26 @@ textarea {
     color: #fff;
 }
 
-.navbar-custom > .navbar-nav > li:hover{
-    background-color: #63a2e9;
+.navbar-custom .nav > li a:hover,
+.navbar-custom .nav li a:focus  {
+    background-color: #3b6ea9;
+}
+
+.navbar-custom li a:focus {
+    background-color: #3b6ea9;
 }
 
 .navbar-custom .navbar-brand {
     color: #eeeeee;
+}
+
+/* Custom navtabs */
+.nav-tabs li {
+    z-index: 0;
+}
+
+/* Custom tooltip*/
+.tooltip {
+   position: fixed;
+   z-index: 1;
 }

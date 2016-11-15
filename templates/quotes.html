@@ -1,0 +1,197 @@
+{% extends "layout.html" %}
+{% block body %}
+<div class="sidebar">
+  <ul class="sidebar-nav" id="sidebar-quotes">
+    <li>
+      <a onclick="open_add_quotes()" data-toggle="tooltip" data-placement="right" title="Добавить" data-container="body"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></a>
+      <div id="add-controls-quotes" class="controls-group" hidden>
+        <a class="sidebar-control accept" onclick="accept_add_quotes()"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></a>
+        <a class="sidebar-control decline" onclick="close_add()"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a>
+      </div>
+    </li>
+    <li>
+      <a onclick="open_change_quotes()" data-toggle="tooltip" data-placement="right" title="Редактировать" data-container="body"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a>
+      <div id="change-controls-quotes" class="controls-group" hidden>
+        <a class="sidebar-control accept" onclick="accept_change_quotes()"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></a>
+        <a class="sidebar-control decline" onclick="decline_change_quotes()"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a>
+      </div>
+    </li>
+    <li>
+      <a onclick="open_remove_quotes()" data-toggle="tooltip" data-placement="right" title="Удалить" data-container="body"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a>
+      <div id="remove-controls-quotes" class="controls-group" hidden>
+        <a class="sidebar-control accept" onclick="accept_remove_quotes()"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></a>
+        <a class="sidebar-control decline" onclick="close_remove()"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a>
+      </div>
+    </li>
+    <li>
+      <a onclick="scroll_top()" data-toggle="tooltip" data-placement="right" title="Вверх" data-container="body"><span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span></a>
+    </li>
+    <li>
+      <a onclick="scroll_bottom()" data-toggle="tooltip" data-placement="right" title="Вниз" data-container="body"><span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span></a>
+    </li>
+  </ul>
+  <ul class="sidebar-nav" id="sidebar-backgrounds" hidden>
+    <li>
+      <a onclick="open_add()" data-toggle="tooltip" data-placement="right" title="Добавить" data-container="body"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></a>
+      <div id="add-controls" class="controls-group" hidden>
+        <a class="sidebar-control accept" onclick="accept_add()"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></a>
+        <a class="sidebar-control decline" onclick="close_add()"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a>
+      </div>
+    </li>
+    <li>
+      <a onclick="open_change()" data-toggle="tooltip" data-placement="right" title="Редактировать" data-container="body"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a>
+      <div id="change-controls" class="controls-group" hidden>
+        <a class="sidebar-control accept" onclick="accept_change()"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></a>
+        <a class="sidebar-control decline" onclick="decline_change()"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a>
+      </div>
+    </li>
+    <li>
+      <a onclick="open_remove()" data-toggle="tooltip" data-placement="right" title="Удалить" data-container="body"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a>
+      <div id="remove-controls" class="controls-group" hidden>
+        <a class="sidebar-control accept" onclick="accept_remove()"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></a>
+        <a class="sidebar-control decline" onclick="close_remove()"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a>
+      </div>
+    </li>
+    <li>
+      <a onclick="scroll_top()" data-toggle="tooltip" data-placement="right" title="Вверх" data-container="body"><span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span></a>
+    </li>
+    <li>
+      <a onclick="scroll_bottom()" data-toggle="tooltip" data-placement="right" title="Вниз" data-container="body"><span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span></a>
+    </li>
+  </ul>
+  <ul class="sidebar-nav" id="sidebar-trash" hidden>
+    <li>
+      <a onclick="open_add()" data-toggle="tooltip" data-placement="right" title="Восстановить" data-container="body"><span class="glyphicon glyphicon-refresh" aria-hidden="true"></span></a>
+      <div id="add-controls" class="controls-group" hidden>
+        <a class="sidebar-control accept" onclick="accept_add()"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></a>
+        <a class="sidebar-control decline" onclick="close_add()"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a>
+      </div>
+    </li>
+    <li>
+      <a onclick="open_remove()" data-toggle="tooltip" data-placement="right" title="Удалить" data-container="body"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a>
+      <div id="remove-controls" class="controls-group" hidden>
+        <a class="sidebar-control accept" onclick="accept_remove()"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></a>
+        <a class="sidebar-control decline" onclick="close_remove()"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a>
+      </div>
+    </li>
+    <li>
+      <a onclick="scroll_top()" data-toggle="tooltip" data-placement="right" title="Вверх" data-container="body"><span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span></a>
+    </li>
+    <li>
+      <a onclick="scroll_bottom()" data-toggle="tooltip" data-placement="right" title="Вниз" data-container="body"><span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span></a>
+    </li>
+  </ul>
+</div>
+<div class="container body-container">
+  <div class="row page-body">
+    <div class="panel panel-custom">
+      <ul class="nav nav-tabs" role="tablist" data-tabs="tabs">
+        <li role="presentation" class="active" onclick="change_tab('quotes')"><a href="#quotes" aria-controls="quotes" role="tab" data-toggle="tab">Цитаты</a></li>
+        <li role="presentation" onclick="change_tab('backgrounds')"><a href="#backgrounds" aria-controls="backgrounds" role="tab" data-toggle="tab">Фоны</a></li>
+        <li role="presentation" onclick="change_tab('trash')"><a href="#trash" aria-controls="trash" role="tab" data-toggle="tab">Корзина</a></li>
+      </ul>
+      <div class="tab-content">
+        <div role="tabpanel" class="tab-pane" id="backgrounds">
+          <table class="table table-striped">
+            <thead>
+            <tr>
+              <td><input type="checkbox" onchange="trigger_checks(this)"></td>
+              <td>#</td>
+              <td>Изображение</td>
+            </tr>
+            </thead>
+            <tbody>
+              <tr id="table-form-background" class="table-form" hidden>
+                <td></td>
+                <td></td>
+                  <td>
+                    <label class="btn btn-default btn-file">
+                      Обзор... <input id="add-img" type="file" onchange="$('#info-' + this.name).html(this.files[0].name);" name="file">
+                    </label>
+                    <span class='label label-info upload-file-info' id="info-file"></span>
+                  </td>
+              </tr>
+              <tr>
+                <td><input type="checkbox" value="1"></td>
+                <td id="id-background">1</td>
+                <td><img src="https://dummyimage.com/160x100/000/fff.jpg" width="160" alt=""></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div role="tabpanel" class="tab-pane" id="trash">
+          <table class="table table-striped">
+            <thead>
+            <tr>
+              <td><input type="checkbox" onchange="trigger_checks(this)"></td>
+              <td>#</td>
+              <td>Контент</td>
+            </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><input type="checkbox" value="1"></td>
+                <td>1</td>
+                <td><img src="https://dummyimage.com/160x100/000/fff.jpg" width="160" alt=""></td>
+              </tr>
+              <tr>
+                <td><input type="checkbox" value="1"></td>
+                <td>1</td>
+                <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent quis.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div role="tabpanel" class="tab-pane active" id="quotes">
+          <table class="table table-striped">
+            <thead>
+            <tr>
+              <td><input type="checkbox" onchange="trigger_checks(this)"></td>
+              <td>#</td>
+              <td>Тема</td>
+              <td>Текст</td>
+              <td>Изображение</td>
+            </tr>
+            </thead>
+            <tbody>
+            <tr id="table-form-quotes" class="table-form" hidden>
+              <td></td>
+              <td id="id"></td>
+                <td>
+                  <select class="form-control" id="add-topic">
+                    <option value="" disabled selected hidden>Набор</option>
+                    {% for topic in topics %}
+                      <option value="{{ topic.id }}">{{ topic.name }}</option>
+                    {% endfor %}
+                  </select>
+                </td>
+                <td><input id="add-text" class="form-control"></td>
+                <td>
+                  <select class="form-control" id="add-background">
+                    <option value="" disabled selected hidden>Фон</option>
+                    <option value="1">Картинка 1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                  </select>
+                </td>
+            </tr>
+            {% for quote in quotes %}
+              {% if quote.is_del == False %}
+                <tr>
+                  <td><input type="checkbox" value="{{ quote.id }}"></td>
+                  <td>{{ quote.id }}</td>
+                  <td>{{ quote.topic }}</td>
+                  <td>{{ quote.text }}</td>
+                  <td><img src="https://dummyimage.com/160x100/000/fff.jpg" width="160" alt=""></td>
+                </tr>
+              {% endif %}
+            {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

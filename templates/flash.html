@@ -1,0 +1,90 @@
+{% extends "layout.html" %}
+{% block body %}
+
+	<div class="page-body">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="page-block table">
+						<div class="table-header">
+							<p>Флеш</p>
+						</div>
+                        {% with messages = get_flashed_messages() %}
+                            {% if messages %}
+                                <ul class=flashes>
+                                    {% for message in messages %}
+                                      <li>{{ message }}</li>
+                                    {% endfor %}
+                                </ul>
+                            {% endif %}
+                        {% endwith %}
+						<div class="row">
+							<div class="col-md-6">
+								<form class="form-inline" action={{ url_for("up_flash") }} method="POST" enctype="multipart/form-data">
+									<div class="form-group">
+										<label class="formlabel" for="version">Версия</label>
+										<input type="text" class="input-s" id="version" name="version" placeholder="Версия">
+										<input type="file" name="file" id="file" class="inputfile" />
+										<label for="file" class="upload">Обзор...</label>
+										<button type="submit" class="upload-submit">Отправить</button>
+									</div>
+								</form>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-12">
+								<table class="table table-quatation">
+									<thead>
+										<tr>
+											<td>id</td>
+											<td>Название</td>
+											<td>Версия</td>
+											<td>Дата</td>
+											<td>Управление</td>
+										</tr>
+									</thead>
+									<tbody>
+										{% for item in data %}
+											<tr>
+												<td>
+													{{ item.id }}
+												</td>
+												<td>
+													{{ item.name }}
+												</td>
+												<td>
+													{{ item.version }}
+												</td>
+												<td>
+													{{ item.date }}
+												</td>
+												<td>
+													<form action={{ url_for("flash_change") }} method=post>
+														<input type=hidden value="{{ item.id }}" name="id">
+														{% if item.is_use == True %}
+															<p>Используется</p>
+														{% else %}
+															<button type=submit class="button">Использовать</button>
+														{% endif %}
+													</form>
+												</td>
+											</tr>
+										{% endfor %}
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="footer-wrap">
+		<div class="container footer">
+		<div class="row">
+			<div class="col-md-12">Eggs 2016</div>
+		</div>
+		</div>
+	</div>
+{% endblock %}

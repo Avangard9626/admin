@@ -1,0 +1,81 @@
+{% extends "layout.html" %}
+{% block body %}
+	<div class="page-body">
+		<div style="margin-left: 10px; margin-right: 10px">
+			<div class="row">
+				<div class="col-md-12">					
+					<div class="page-block table">
+						<div class="table-header">
+							<p>Слова</p>
+						</div>
+						<div class="col-md-12">
+							<form class="form-inline" action={{ url_for('add_language') }} method=POST hidden>
+								<div class="form-group">
+									<label class="formlabel" for="language">Язык</label>
+									<input type="text" class="input-s" id="language" name="name" placeholder="Язык">
+								</div>
+								<div class="form-group">
+									<label class="formlabel" for="short_name">Сокращение</label>
+									<input type="text" class="input-s" id="short_name" name="short_name" placeholder="Сокращение">
+								</div>
+								<div class="form-group">
+									<button type="submit" class="btn form-btn">Добавить</button>
+								</div>
+							</form>
+						</div>
+						<div class="row">
+							<div class="col-md-12">
+								<table class="table table-lang">
+									<thead>
+										<tr>
+											<td>Unique группы</td>
+											{% for key, value in languages.iteritems() %}
+												<td>{{ value.name }}</td>
+											{% endfor %}
+											<td>Управление</td>
+										</tr>
+									</thead>
+									<tbody>
+										<tr>
+											<td>Новая группа:</td>
+											<form class="form-inline" action={{ url_for('words') }} method="POST">
+												{% for key, value in languages.iteritems() %}
+													<td><input type="text" class="input-s" name={{ value.id }}></td>
+												{% endfor %}
+												<td><button type="submit">Добавить</button></td>
+											</form>
+										</tr>
+										{% for key, value in words.iteritems() %}
+											<tr id={{ key }}>
+												<td>{{ key }}</td>
+												{% set group = value %}
+												{% for key, value in languages.iteritems() %}
+													<td>
+														{% if group.get(value.name).name %}
+															{{ group.get(value.name).name }}
+														{% else %}
+															<input type="text" class="input-s" name="update_word">
+														{% endif %}
+													</td>
+												{% endfor %}
+												<!--<td><button id={{ key }}>Редактировать</button></td>-->
+											</tr>
+										{% endfor %}
+									</tbody>
+								</table>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="footer-wrap">
+		<div class="container footer">
+		<div class="row">
+			<div class="col-md-12">Eggs 2016</div>
+		</div>
+		</div>
+	</div>
+{% endblock %}

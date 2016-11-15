@@ -1,0 +1,44 @@
+{% extends "layout.html" %}
+{% block body %}
+	<div class="page-body">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">					
+					<div class="page-block table">
+						<div class="row">
+							<div class="table-header">
+								<p>Переменные</p>
+							</div>
+							{% for key, value in data.iteritems() %}
+								<form class="form-inline" id={{ key }}>
+									<div class="col-md-10 col-md-offset-1">
+										<p>{{ key }}</p>
+										{% for key, value in value.iteritems() %}
+											{%- if key == "__name__" %}{% continue %}{% endif %}
+											<div class="form-group">
+												<label class="formlabel" for={{ key }}>{{ key }}</label>
+												<input type="text" class="input-s" id={{ key }} name={{ key }}
+													   placeholder={{ key }} value={{ value }}>
+											</div>
+										{% endfor %}
+									</div>
+								</form>
+							{% endfor %}
+							<div class="form-group col-md-12">
+								<button type="submit" id="button" class="btn form-btn" onclick=update_config()>Обновить параметры</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="footer-wrap">
+		<div class="container footer">
+		<div class="row">
+			<div class="col-md-12">Eggs 2016</div>
+		</div>
+		</div>
+	</div>
+{% endblock %}

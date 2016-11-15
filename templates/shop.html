@@ -1,0 +1,109 @@
+{% extends "layout.html" %}
+{% block body %}
+<div class="page-body" style="min-height: ">
+	<div style="margin-left: 10px; margin-right: 10px;">
+		<div class="row">
+			<div class="col-md-12">
+				<div class="page-block table">
+					<div class="table-header">
+						<p>Магазин</p>
+					</div>
+					<form class="form-inline" action={{ url_for('shop') }} method=POST enctype="multipart/form-data">
+						<div class="form-group">
+							<label class="formlabel" for="name">Название</label>
+							<input type="text" class="input-s" id="name" name="name" placeholder="Название">
+						</div>
+						<div class="form-group">
+							<label class="formlabel" for="title">title</label>
+							<input type="text" class="input-s" id="title" name="title" placeholder="title">
+						</div>
+						<div class="form-group">
+							<label class="formlabel" for="price_old">Старая цена</label>
+							<input type="text" class="input-s" id="price_old" name="price_old" placeholder="Старая Цена" value=0>
+						</div>
+						<div class="form-group">
+							<label class="formlabel" for="price_eggs">Цена в яйцах</label>
+							<input type="text" class="input-s" id="price_eggs" name="price_eggs" placeholder="Цена в яйцах" value=0>
+						</div>
+						<div class="form-group">
+							<label class="formlabel" for="price_coins">Цена в монетах</label>
+							<input type="text" class="input-s" id="price_coins" name="price_coins" placeholder="Цена в монетах" value=0>
+						</div>
+						<div class="form-group">
+							<label class="formlabel" for="price_voices">Цена в голосах</label>
+							<input type="text" class="input-s" id="price_voices" name="price_voices" placeholder="Цена в голосах" value=0>
+						</div>
+						<div class="form-group">
+							<label class="formlabel" for="new" style="margin-bot: 10px;">Новый?</label>
+							<input type="checkbox" id="new" name="new" placeholder="Новый?" value="True">
+							<input type="hidden" name="new" value="False">
+						</div>
+						<div class="form-group">
+							<label class="formlabel" for="timer">Таймер</label>
+							<input type="datetime-local" class="input-s" id="timer" name="timer" placeholder="Таймер">
+						</div>
+						<div class="form-group">
+							<label class="formlabel" for="img">Изображение</label>
+							<input type="file" name="file" id="img" class="inputfile" />
+							<label for="img" class="upload">Обзор...</label>
+						</div>
+						<div class="form-group">
+							<button type="submit" class="btn form-btn">Добавить</button>
+						</div>
+					</form>
+					<div class="row">
+						<div class="col-md-12">
+							<table class="table table-lang">
+								<thead>
+									<tr>
+										<td>ID</td>
+										<td>Название(Пользователь)</td>
+										<td>Title(Запросы)</td>
+										<td>Изображение</td>
+										<td>Цена в яйцах</td>
+										<td>Цена в монетах</td>
+										<td>Цена в голосах</td>
+										<td>Старая цена</td>
+										<td>Новый?</td>
+										<td>Таймер</td>
+									</tr>
+								</thead>
+								<tbody>
+								{% for item in data %}
+										<tr {% if item.is_del == True %}{{ 'hidden' }}{% endif %}>
+											<td>{{ item.id }}</td>
+											<td>{{ item.name }}</td>
+											<td>{{ item.title }}</td>
+											<td><img src={{ url_for('send_img', filename=item.img) }} width="160" alt=""></td>
+											<td>{{ item.price_eggs }}</td>
+											<td>{{ item.price_coins }}</td>
+											<td>{{ item.price_voices }}</td>
+											<td>{{ item.price_old }}</td>
+											<td>{{ item.new }}</td>
+											<td>{{ item.timer }}</td>
+											<td>
+												<form action={{ url_for("del_product") }} method=post>
+													<input type=hidden value="{{ item.id }}" name="del_id">
+													<button type=submit class="delete">Удалить</button>
+												</form>
+											</td>
+										</tr>
+								{% endfor %}
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="footer-wrap">
+	<div class="container footer">
+	<div class="row">
+		<div class="col-md-12">Eggs 2016</div>
+	</div>
+	</div>
+</div>
+{% endblock %}
