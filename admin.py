@@ -120,13 +120,12 @@ def quit():
 @app.route("/")
 @auth_require()
 def index():
-    return redirect('quotes')
     return render_template('index.html')
 
 
 @app.route("/quotes")
 @auth_require()
-def quotation():
+def quotes():
     quotes = []
     topics = []
     for row in session.query(Quote):
@@ -281,9 +280,7 @@ def shop():
                 'id': instance.id,
                 'name': instance.name,
                 'title': instance.title,
-                'price_eggs': instance.price_eggs,
-                'price_coins': instance.price_coins,
-                'price_voices': instance.price_voices,
+                'price': instance.price,
                 'price_old': instance.price_old,
                 'new': instance.is_new,
                 'timer': instance.timer_end,

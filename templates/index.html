@@ -1,174 +1,170 @@
-{% extends "layout.html" %}
-{% block body %}
-<div class="sidebar">
-  <ul class="sidebar-nav">
-    <li class="sidebar-brand">Toolbar</li>
-    <li>
-      <a onclick="open_add()" data-toggle="tooltip" data-placement="right" title="Добавить"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span></a>
-      <div id="add-controls" class="controls-group" hidden>
-        <a class="sidebar-control accept" onclick="accept_add()"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></a>
-        <a class="sidebar-control decline" onclick="close_add()"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a>
-      </div>
-    </li>
-    <li>
-      <a onclick="open_change()" data-toggle="tooltip" data-placement="right" title="Редактировать"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span></a>
-      <div id="change-controls" class="controls-group" hidden>
-        <a class="sidebar-control accept" onclick="accept_change()"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></a>
-        <a class="sidebar-control decline" onclick="decline_change()"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a>
-      </div>
-    </li>
-    <li>
-      <a onclick="open_remove()" data-toggle="tooltip" data-placement="right" title="Удалить"><span class="glyphicon glyphicon-trash" aria-hidden="true"></span></a>
-      <div id="remove-controls" class="controls-group" hidden>
-        <a class="sidebar-control accept" onclick="accept_remove()"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></a>
-        <a class="sidebar-control decline" onclick="close_remove()"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a>
-      </div>
-    </li>
-    <li>
-      <a onclick="scroll_top()" data-toggle="tooltip" data-placement="right" title="Вверх"><span class="glyphicon glyphicon-chevron-up" aria-hidden="true"></span></a>
-    </li>
-    <li>
-      <a onclick="scroll_bottom()" data-toggle="tooltip" data-placement="right" title="Вниз"><span class="glyphicon glyphicon-chevron-down" aria-hidden="true"></span></a>
-    </li>
-  </ul>
-</div>
-<div class="container body-container">
-  <div class="row page-body">
-    <div class="panel panel-custom">
-      <div class="panel-heading">Цитаты</div>
-      <table class="table table-striped">
-        <thead>
-        <tr>
-          <td><input type="checkbox" onchange="trigger_checks(this)"></td>
-          <td>#</td>
-          <td>Тема</td>
-          <td>Текст</td>
-          <td>Изображение</td>
-        </tr>
-        </thead>
-        <tbody>
-        <tr id="table-form" class="table-form" hidden>
-          <td></td>
-          <td id="id"></td>
-          <form>
-            <td>
-              <select class="form-control" id="add-topic">
-                <option value="" disabled selected hidden>Набор</option>
-                <option value="1">Базовый набор</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-              </select>
-            </td>
-            <td><input id="add-text" class="form-control"></td>
-            <td>
-              <label class="btn btn-default btn-file">
-                Обзор... <input id="add-img" type="file" onchange="$('#info-' + this.name).html(this.files[0].name);" name="file">
-              </label>
-              <span class='label label-info upload-file-info' id="info-file"></span>
-            </td>
-          </form>
-        </tr>
-        <tr>
-          <td><input type="checkbox" value="1"></td>
-          <td>1</td>
-          <td>Базовый набор</td>
-          <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent quis.</td>
-          <td><img src="https://dummyimage.com/160x100/000/fff.jpg" width="160" alt=""></td>
-        </tr>
-        <tr>
-          <td><input type="checkbox" value="2"></td>
-          <td>2</td>
-          <td>Базовый набор</td>
-          <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent quis.</td>
-          <td><img src="https://dummyimage.com/160x100/000/fff.jpg" width="160" alt=""></td>
-        </tr>
-        <tr>
-          <td><input type="checkbox" value="3"></td>
-          <td>3</td>
-          <td>Базовый набор</td>
-          <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent quis.</td>
-          <td><img src="https://dummyimage.com/160x100/000/fff.jpg" width="160" alt=""></td>
-        </tr>
-        <tr>
-          <td><input type="checkbox" value="3"></td>
-          <td>3</td>
-          <td>Базовый набор</td>
-          <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent quis.</td>
-          <td><img src="https://dummyimage.com/160x100/000/fff.jpg" width="160" alt=""></td>
-        </tr>
-        <tr>
-          <td><input type="checkbox" value="3"></td>
-          <td>3</td>
-          <td>Базовый набор</td>
-          <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent quis.</td>
-          <td><img src="https://dummyimage.com/160x100/000/fff.jpg" width="160" alt=""></td>
-        </tr>
-        <tr>
-          <td><input type="checkbox" value="3"></td>
-          <td>3</td>
-          <td>Базовый набор</td>
-          <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent quis.</td>
-          <td><img src="https://dummyimage.com/160x100/000/fff.jpg" width="160" alt=""></td>
-        </tr>
-        <tr>
-          <td><input type="checkbox" value="3"></td>
-          <td>3</td>
-          <td>Базовый набор</td>
-          <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent quis.</td>
-          <td><img src="https://dummyimage.com/160x100/000/fff.jpg" width="160" alt=""></td>
-        </tr>
-        <tr>
-          <td><input type="checkbox" value="3"></td>
-          <td>3</td>
-          <td>Базовый набор</td>
-          <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent quis.</td>
-          <td><img src="https://dummyimage.com/160x100/000/fff.jpg" width="160" alt=""></td>
-        </tr>
-        <tr>
-          <td><input type="checkbox" value="3"></td>
-          <td>3</td>
-          <td>Базовый набор</td>
-          <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent quis.</td>
-          <td><img src="https://dummyimage.com/160x100/000/fff.jpg" width="160" alt=""></td>
-        </tr>
-        <tr>
-          <td><input type="checkbox" value="3"></td>
-          <td>3</td>
-          <td>Базовый набор</td>
-          <td>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent quis.</td>
-          <td><img src="https://dummyimage.com/160x100/000/fff.jpg" width="160" alt=""></td>
-        </tr>
-        </tbody>
-      </table>
+<!DOCTYPE html>
+<head>
+  <meta charset="UTF-8">
+  <title>Административная панель</title>
+  <link rel="stylesheet" href="static/css/bootstrap.min.css">
+  <link rel="stylesheet" href="static/css/bootstrap-theme.min.css">
+  <link rel="stylesheet" href="static/css/main.css">
+  <link rel="stylesheet" href="static/css/fileinput.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Roboto:400i" rel="stylesheet">
+</head>
+<nav class="navbar navbar-custom navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href={{ url_for('index') }}>Brand</a>
     </div>
+    <ul class="nav navbar-nav">
+      <li><a href={{ url_for('quotes') }}>Цитаты</a></li>
+      <li><a href="#">Гороскоп</a></li>
+      <li><a href="#">Словарь</a></li>
+      <li><a href="#">Магазин</a></li>
+      <li><a href="#">Переменные</a></li>
+      <li><a href="#">Флеш</a></li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+      <li><a href="#">Выйти</a></li>
+    </ul>
   </div>
-</div>
-
-<div class="row">
-  <div class="col-md-12">
-    <div class="page-block table">
-      <div class="col-md-12" hidden>
-        <form class="form-inline" action="" method=POST>
-          <div class="form-group">
-            <label class="formlabel" for="language">Язык</label>
-            <input type="text" class="input-s" id="language" name="name" placeholder="Язык">
+</nav>
+<body>
+<div class="page-body">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="main-page-block-content page-block main-desc">
+          <div class="main-page-block-content-header">
+            Основной блок с информацией
           </div>
-          <div class="form-group">
-            <label class="formlabel" for="short_name">Сокращение</label>
-            <input type="text" class="input-s" id="short_name" name="short_name" placeholder="Сокращение">
+          <div class="main-page-block-content-desc">Далеко-далеко за словесными горами в стране, гласных и согласных живут рыбные тексты. Рекламных ты текста, однажды единственное буквоград повстречался дал свой языкового залетают ведущими пустился! Собрал пунктуация океана но курсивных, диких грамматики.</div>
+          <div class="main-page-block-buttons">
+            <a href="" class="main-page-block-button">Кнопка</a>
           </div>
-          <div class="form-group">
-            <button type="submit" class="btn form-btn">Добавить</button>
-          </div>
-        </form>
+        </div>
       </div>
-      <div class="row">
-        <div class="col-md-12">
-
+      <div class="col-md-3">
+        <div class="main-status page-block">
+          <div class="main-status-header">
+            Статус платформы
+          </div>
+          <div class="main-status-ping clear-fix">
+            <div class="main-status-ping-img fll"><?xml version="1.0" ?><svg height="52px" version="1.1" viewBox="0 0 20 20" width="52px" xmlns="http://www.w3.org/2000/svg" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns" xmlns:xlink="http://www.w3.org/1999/xlink"><title/><desc/><defs/><g fill="none" fill-rule="evenodd" id="Page-1" stroke="none" stroke-width="1"><g fill="#63A2E9" fill-opacity="0.9" id="Icons-Device" transform="translate(-44.000000, 0.000000)"><g id="access-time" transform="translate(44.000000, 0.000000)"><path d="M10,0 C4.5,0 0,4.5 0,10 C0,15.5 4.5,20 10,20 C15.5,20 20,15.5 20,10 C20,4.5 15.5,0 10,0 L10,0 Z M10,18 C5.6,18 2,14.4 2,10 C2,5.6 5.6,2 10,2 C14.4,2 18,5.6 18,10 C18,14.4 14.4,18 10,18 Z M10.5,5 L9,5 L9,11 L14.2,14.2 L15,12.9 L10.5,10.2 L10.5,5 Z" id="Shape"/></g></g></g></svg></div>
+            <div class="main-status-ping-label">
+              <div class="main-status-info">
+                <span class="main-status-info-val">26</span>
+                <span class="main-status-info-label">мс</span>
+              </div>
+              <div class="main-status-info-text">Время отклика</div>
+            </div>
+          </div>
+          <div class="main-status-uptime clear-fix">
+            <div class="main-status-ping-img fll"><?xml version="1.0" ?><svg height="52px" version="1.1" viewBox="0 0 20 20" width="52px" xmlns="http://www.w3.org/2000/svg" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns" xmlns:xlink="http://www.w3.org/1999/xlink"><title/><desc/><defs/><g fill="none" fill-rule="evenodd" id="Page-1" stroke="none" stroke-width="1"><g fill="#63A2E9" fill-opacity="0.9" id="Icons-Device" transform="translate(-44.000000, 0.000000)"><g id="access-time" transform="translate(44.000000, 0.000000)"><path d="M10,0 C4.5,0 0,4.5 0,10 C0,15.5 4.5,20 10,20 C15.5,20 20,15.5 20,10 C20,4.5 15.5,0 10,0 L10,0 Z M10,18 C5.6,18 2,14.4 2,10 C2,5.6 5.6,2 10,2 C14.4,2 18,5.6 18,10 C18,14.4 14.4,18 10,18 Z M10.5,5 L9,5 L9,11 L14.2,14.2 L15,12.9 L10.5,10.2 L10.5,5 Z" id="Shape"/></g></g></g></svg></div>
+            <div class="main-status-ping-label">
+              <div class="main-status-info">
+                <span class="main-status-info-val" id="cpu">-</span>
+                <span class="main-status-info-label">%</span>
+              </div>
+              <div class="main-status-info-text">CPU usage</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="main-status page-block">
+          <div class="main-status-header">
+            Пользователи
+          </div>
+          <div class="main-status-ping clear-fix">
+            <div class="main-status-ping-img fll"><?xml version="1.0" ?><svg height="52px" version="1.1" viewBox="0 0 20 20" width="52px" xmlns="http://www.w3.org/2000/svg" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns" xmlns:xlink="http://www.w3.org/1999/xlink"><title/><desc/><defs/><g fill="none" fill-rule="evenodd" id="Page-1" stroke="none" stroke-width="1"><g fill="#63A2E9" fill-opacity="0.9" id="Icons-Device" transform="translate(-44.000000, 0.000000)"><g id="access-time" transform="translate(44.000000, 0.000000)"><path d="M10,0 C4.5,0 0,4.5 0,10 C0,15.5 4.5,20 10,20 C15.5,20 20,15.5 20,10 C20,4.5 15.5,0 10,0 L10,0 Z M10,18 C5.6,18 2,14.4 2,10 C2,5.6 5.6,2 10,2 C14.4,2 18,5.6 18,10 C18,14.4 14.4,18 10,18 Z M10.5,5 L9,5 L9,11 L14.2,14.2 L15,12.9 L10.5,10.2 L10.5,5 Z" id="Shape"/></g></g></g></svg></div>
+            <div class="main-status-ping-label">
+              <div class="main-status-info">
+                <span class="main-status-info-val">1254</span>
+                <span class="main-status-info-label"></span>
+              </div>
+              <div class="main-status-info-text">Всего</div>
+            </div>
+          </div>
+          <div class="main-status-uptime clear-fix">
+            <div class="main-status-ping-img fll"><?xml version="1.0" ?><svg height="52px" version="1.1" viewBox="0 0 20 20" width="52px" xmlns="http://www.w3.org/2000/svg" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns" xmlns:xlink="http://www.w3.org/1999/xlink"><title/><desc/><defs/><g fill="none" fill-rule="evenodd" id="Page-1" stroke="none" stroke-width="1"><g fill="#63A2E9" fill-opacity="0.9" id="Icons-Device" transform="translate(-44.000000, 0.000000)"><g id="access-time" transform="translate(44.000000, 0.000000)"><path d="M10,0 C4.5,0 0,4.5 0,10 C0,15.5 4.5,20 10,20 C15.5,20 20,15.5 20,10 C20,4.5 15.5,0 10,0 L10,0 Z M10,18 C5.6,18 2,14.4 2,10 C2,5.6 5.6,2 10,2 C14.4,2 18,5.6 18,10 C18,14.4 14.4,18 10,18 Z M10.5,5 L9,5 L9,11 L14.2,14.2 L15,12.9 L10.5,10.2 L10.5,5 Z" id="Shape"/></g></g></g></svg></div>
+            <div class="main-status-ping-label">
+              <div class="main-status-info">
+                <span class="main-status-info-val">348</span>
+                <span class="main-status-info-label"></span>
+              </div>
+              <div class="main-status-info-text">Онлайн</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-8">
+        <div class="main-page-block-content page-block main-desc">
+          <div class="main-page-block-content-header">
+            График
+          </div>
+          <div class='chart'>
+            <svg viewbox='0 0 560 260'>
+              <defs>
+                <filter id='dropshadow'>
+                  <feGaussianBlur in='SourceAlpha' stdDeviation='3'></feGaussianBlur>
+                  <feOffset dx='0' dy='0' result='offsetblur'></feOffset>
+                  <feComponentTransfer>
+                    <feFuncA slope='0.2' type='linear'></feFuncA>
+                  </feComponentTransfer>
+                  <feMerge>
+                    <feMergeNode></feMergeNode>
+                    <feMergeNode in='SourceGraphic'></feMergeNode>
+                  </feMerge>
+                </filter>
+              </defs>
+              <g class='datasets'>
+                <path class='dataset' d='M0,260 C0,260 4,252 7,252 C66,252 90,102 139,102 C188,102 205,135 252,135 C299,135 309,89 330,89 C350,89 366,122 404,122 C442,122 431,98 451,98 C470,98 499,213 560,260 L0,259 Z' id='dataset-3'></path>
+                <path class='dataset' d='M0,260 C35,254 63,124 88,124 C114,124 148,163 219,163 C290,163 315,100 359,100 C402,100 520,244 560,259 C560,259 0,259 0,260 Z' id='dataset-2'></path>
+                <path class='dataset' d='M0,260 C0,260 22,199 64,199 C105,199 112,144 154,144 C195,144 194,126 216,126 C237,126 263,184 314,184 C365,183 386,128 434,129 C483,130 511,240 560,260 L0,260 Z' id='dataset-1'></path>
+              </g>
+            </svg>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="main-page-block-content page-block main-desc">
+          <div class="main-page-block-content-header">
+            Еще один блок
+          </div>
+          <p>Далеко-далеко за словесными горами в стране, гласных и согласных живут рыбные тексты. Текстов семантика, она свою наш, строчка журчит рот что! Даже сбить, но снова это буквоград несколько толку текст продолжил, последний.</p>
         </div>
       </div>
     </div>
   </div>
 </div>
-{% endblock %}
+
+<div class="footer-wrap">
+  <div class="container footer">
+    <div class="row">
+      <div class="col-md-12">Eggs 2016</div>
+    </div>
+  </div>
+</div>
+
+<script src="static/js/server_status.js"></script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script src="static/js/bootstrap.min.js"></script>
+<script src="static/js/npm.js"></script>
+<script src="static/js/fileinput.min.js"></script>
+<script src="static/js/locales/ru.js"></script>
+<script src="static/js/main.js"></script>
+<script>
+          $(document).ready(function(){
+              $('[data-toggle="tooltip"]').tooltip({
+                  trigger : 'hover'
+              });
+          });
+  </script>
+</body>
